@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Sample.BasicRestAspnetCore.Host.Models;
+using Sample.BasicRestAspnetCore.Host.Services;
 
 namespace Sample.BasicRestAspnetCore.Host.Controllers
 {
@@ -12,16 +14,16 @@ namespace Sample.BasicRestAspnetCore.Host.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<Person>> Get([FromServices]IPersonService personService)
         {
-            return new string[] { "value1", "value2" };
+            return Ok(personService.FindAll().AsEnumerable());
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<Person> Get(long id, [FromServices]IPersonService personService)
         {
-            return "value";
+            return Ok(personService.FindById(id));
         }
 
         // POST api/values
