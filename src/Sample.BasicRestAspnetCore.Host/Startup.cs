@@ -42,6 +42,8 @@ namespace Sample.BasicRestAspnetCore.Host
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddApiVersioning();
+
             services.AddScoped<IPersonService, PersonService>();
         }
 

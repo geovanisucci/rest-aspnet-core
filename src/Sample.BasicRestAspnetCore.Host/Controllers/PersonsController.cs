@@ -8,8 +8,10 @@ using Sample.BasicRestAspnetCore.Host.Services;
 
 namespace Sample.BasicRestAspnetCore.Host.Controllers
 {
-    [Route("api/[controller]")]
+    
     [ApiController]
+    [ApiVersion("1")]
+    [Route("api/[controller]/v{version:apiVersion}")]
     public class PersonsController : ControllerBase
     {
         // GET api/values
