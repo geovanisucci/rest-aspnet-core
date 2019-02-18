@@ -1,8 +1,8 @@
-using Microsoft.EntityFrameworkCore;
-
-namespace Sample.BasicRestAspnetCore.Host.Models.Context
+namespace Sample.BasicRestAspnetCore.Data.Context
 {
-    public class MySqlContext : DbContext
+    using Microsoft.EntityFrameworkCore;
+    using Sample.BasicRestAspnetCore.EntitiesDomain;
+    public class MySqlContext: DbContext
     {
         public MySqlContext()
         {
