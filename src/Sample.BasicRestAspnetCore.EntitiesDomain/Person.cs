@@ -1,4 +1,4 @@
-namespace Sample.BasicRestAspnetCore.Host.Models
+namespace Sample.BasicRestAspnetCore.EntitiesDomain
 {
     public class Person
     {

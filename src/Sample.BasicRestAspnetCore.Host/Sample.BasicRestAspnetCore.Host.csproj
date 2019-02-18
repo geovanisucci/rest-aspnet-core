@@ -12,4 +12,10 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Sample.BasicRestAspnetCore.Business\Sample.BasicRestAspnetCore.Business.csproj" />
+    <ProjectReference Include="..\Sample.BasicRestAspnetCore.EntitiesDomain\Sample.BasicRestAspnetCore.EntitiesDomain.csproj" />
+    <ProjectReference Include="..\Sample.BasicRestAspnetCore.Data\Sample.BasicRestAspnetCore.Data.csproj" />
+  </ItemGroup>
+
 </Project>

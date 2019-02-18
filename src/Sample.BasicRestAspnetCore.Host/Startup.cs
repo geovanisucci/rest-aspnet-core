@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Sample.BasicRestAspnetCore.Host.Models.Context;
-using Sample.BasicRestAspnetCore.Host.Services;
-using Sample.BasicRestAspnetCore.Host.Services.Implementations;
+using Sample.BasicRestAspnetCore.Business.Person.Implementation;
+using Sample.BasicRestAspnetCore.Business.Person.Interface;
+using Sample.BasicRestAspnetCore.Data.Context;
+using Sample.BasicRestAspnetCore.Data.Repositories.Person.Implementation;
+using Sample.BasicRestAspnetCore.Data.Repositories.Person.Interface;
 
 namespace Sample.BasicRestAspnetCore.Host
 {
@@ -44,7 +38,8 @@ namespace Sample.BasicRestAspnetCore.Host
 
             services.AddApiVersioning();
 
-            services.AddScoped<IPersonService, PersonService>();
+            services.AddScoped<IPersonBusiness, PersonBusiness>();
+            services.AddScoped<IPersonRepository, PersonRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

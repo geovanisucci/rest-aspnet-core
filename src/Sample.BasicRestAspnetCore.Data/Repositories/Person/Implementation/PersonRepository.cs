@@ -1,20 +1,20 @@
 using System.Collections.Generic;
 using System.Linq;
-using Sample.BasicRestAspnetCore.Host.Models;
-using Sample.BasicRestAspnetCore.Host.Models.Context;
+using Sample.BasicRestAspnetCore.Data.Context;
+using Sample.BasicRestAspnetCore.Data.Repositories.Person.Interface;
+using Sample.BasicRestAspnetCore.EntitiesDomain;
 
-namespace Sample.BasicRestAspnetCore.Host.Services.Implementations
+namespace Sample.BasicRestAspnetCore.Data.Repositories.Person.Implementation
 {
-    public class PersonService : IPersonService
+    public class PersonRepository : IPersonRepository
     {
-
         private readonly MySqlContext _mySqlContext;
 
-        public PersonService(MySqlContext mySqlContext)
+        public PersonRepository(MySqlContext mySqlContext)
         {
             _mySqlContext = mySqlContext;
         }
-        public Person Create(Person person)
+        public Sample.BasicRestAspnetCore.EntitiesDomain.Person Create(Sample.BasicRestAspnetCore.EntitiesDomain.Person person)
         {
             try
             {
@@ -50,17 +50,17 @@ namespace Sample.BasicRestAspnetCore.Host.Services.Implementations
             }
         }
 
-        public List<Person> FindAll()
+        public List<Sample.BasicRestAspnetCore.EntitiesDomain.Person> FindAll()
         {
             return _mySqlContext.Persons.ToList();
         }
 
-        public Person FindById(long id)
+        public Sample.BasicRestAspnetCore.EntitiesDomain.Person FindById(long id)
         {
             return _mySqlContext.Persons.Find(id);
         }
 
-        public Person Update(Person person)
+        public Sample.BasicRestAspnetCore.EntitiesDomain.Person Update(Sample.BasicRestAspnetCore.EntitiesDomain.Person person)
         {
             try
             {
@@ -72,7 +72,7 @@ namespace Sample.BasicRestAspnetCore.Host.Services.Implementations
                 }
                 else
                 {
-                    return new Person();
+                    return new Sample.BasicRestAspnetCore.EntitiesDomain.Person();
                 }
 
             }
