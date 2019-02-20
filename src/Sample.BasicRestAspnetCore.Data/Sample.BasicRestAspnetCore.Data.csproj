@@ -12,4 +12,6 @@
     <ProjectReference Include="..\Sample.BasicRestAspnetCore.EntitiesDomain\Sample.BasicRestAspnetCore.EntitiesDomain.csproj" />
   </ItemGroup>
 
+  
+
 </Project>

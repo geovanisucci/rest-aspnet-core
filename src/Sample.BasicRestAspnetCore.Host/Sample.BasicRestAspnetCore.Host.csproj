@@ -6,16 +6,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.0" />
+    
+    
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Sample.BasicRestAspnetCore.Business\Sample.BasicRestAspnetCore.Business.csproj" />
     <ProjectReference Include="..\Sample.BasicRestAspnetCore.EntitiesDomain\Sample.BasicRestAspnetCore.EntitiesDomain.csproj" />
     <ProjectReference Include="..\Sample.BasicRestAspnetCore.Data\Sample.BasicRestAspnetCore.Data.csproj" />
+    <ProjectReference Include="..\Sample.BasicRestAspnetCore.DatabaseMigration\Sample.BasicRestAspnetCore.DatabaseMigration.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\*.sql" />
+  </ItemGroup>
 </Project>
