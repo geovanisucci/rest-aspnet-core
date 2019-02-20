@@ -1,4 +1,4 @@
-# rest-aspnet-core
+# RESTFul API .Net Core Repository Pattern Sample
 Sample WebAPI with dotnet core and Docker.
 This sample contains:
 
