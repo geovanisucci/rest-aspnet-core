@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Diagnostics;
+using System.Reflection;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +11,7 @@ using Sample.BasicRestAspnetCore.Business.Person.Interface;
 using Sample.BasicRestAspnetCore.Data.Context;
 using Sample.BasicRestAspnetCore.Data.Repositories.Person.Implementation;
 using Sample.BasicRestAspnetCore.Data.Repositories.Person.Interface;
+using Sample.BasicRestAspnetCore.DatabaseMigration;
 
 namespace Sample.BasicRestAspnetCore.Host
 {
@@ -24,13 +27,15 @@ namespace Sample.BasicRestAspnetCore.Host
         }
 
         public IConfiguration Configuration { get; }
-      
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
-            var connection = Configuration["CONNECTION_STRING"];
+            var connection = $"{Configuration["CONNECTION_STRING"]}Database={Configuration["DATABASE_NAME"]};";
+
+            Migration.Apply(Configuration["CONNECTION_STRING"], Configuration["DATABASE_NAME"]);
 
             services.AddDbContext<MySqlContext>(options => options.UseMySql(connection));
 
@@ -59,6 +64,6 @@ namespace Sample.BasicRestAspnetCore.Host
             app.UseMvc();
         }
 
-       
+
     }
 }

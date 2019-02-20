@@ -6,11 +6,11 @@ namespace Sample.BasicRestAspnetCore.Data.Context
     {
         public MySqlContext()
         {
-
+            
         }
         public MySqlContext(DbContextOptions<MySqlContext> options) : base(options)
         {
-
+             
         }
 
         public DbSet<Person> Persons { get; set; }

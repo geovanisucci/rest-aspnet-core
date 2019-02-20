@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.BasicRestAspnetCore.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.BasicRestAspnetCore.EntitiesDomain", "Sample.BasicRestAspnetCore.EntitiesDomain\Sample.BasicRestAspnetCore.EntitiesDomain.csproj", "{506C3997-04B5-4594-BABB-1F129560B695}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.BasicRestAspnetCore.DatabaseMigration", "Sample.BasicRestAspnetCore.DatabaseMigration\Sample.BasicRestAspnetCore.DatabaseMigration.csproj", "{21C37CC0-16AC-402A-8B51-265C9EE93967}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +60,17 @@ Global
 		{506C3997-04B5-4594-BABB-1F129560B695}.Release|x64.Build.0 = Release|Any CPU
 		{506C3997-04B5-4594-BABB-1F129560B695}.Release|x86.ActiveCfg = Release|Any CPU
 		{506C3997-04B5-4594-BABB-1F129560B695}.Release|x86.Build.0 = Release|Any CPU
+		{21C37CC0-16AC-402A-8B51-265C9EE93967}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21C37CC0-16AC-402A-8B51-265C9EE93967}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21C37CC0-16AC-402A-8B51-265C9EE93967}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{21C37CC0-16AC-402A-8B51-265C9EE93967}.Debug|x64.Build.0 = Debug|Any CPU
+		{21C37CC0-16AC-402A-8B51-265C9EE93967}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{21C37CC0-16AC-402A-8B51-265C9EE93967}.Debug|x86.Build.0 = Debug|Any CPU
+		{21C37CC0-16AC-402A-8B51-265C9EE93967}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21C37CC0-16AC-402A-8B51-265C9EE93967}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21C37CC0-16AC-402A-8B51-265C9EE93967}.Release|x64.ActiveCfg = Release|Any CPU
+		{21C37CC0-16AC-402A-8B51-265C9EE93967}.Release|x64.Build.0 = Release|Any CPU
+		{21C37CC0-16AC-402A-8B51-265C9EE93967}.Release|x86.ActiveCfg = Release|Any CPU
+		{21C37CC0-16AC-402A-8B51-265C9EE93967}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
