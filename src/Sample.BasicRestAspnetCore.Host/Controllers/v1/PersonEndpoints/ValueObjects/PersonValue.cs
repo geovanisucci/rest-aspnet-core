@@ -1,10 +1,8 @@
-using Sample.BasicRestAspnetCore.EntitiesDomain.Base;
-
-namespace Sample.BasicRestAspnetCore.EntitiesDomain
+namespace Sample.BasicRestAspnetCore.Host.Controllers.v1.PersonEndpoints.ValueObjects
 {
-    public class Person : BaseEntity
+    public class PersonValue
     {
-       
+        public long Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }

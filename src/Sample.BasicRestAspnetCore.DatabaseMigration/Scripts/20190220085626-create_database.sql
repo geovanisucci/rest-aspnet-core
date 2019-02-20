@@ -1,4 +1,3 @@
-create schema if not exists rest_with_aspnet;
 use `rest_with_aspnet`;
 
 create table `persons`(
