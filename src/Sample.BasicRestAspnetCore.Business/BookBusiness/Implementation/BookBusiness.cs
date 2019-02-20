@@ -19,7 +19,7 @@ namespace Sample.BasicRestAspnetCore.Business.BookBusiness.Implementation
             .Create(person);
         }
 
-        public void Delete(string id)
+        public void Delete(long id)
         {
            _repository
            .Delete(id);
@@ -33,7 +33,7 @@ namespace Sample.BasicRestAspnetCore.Business.BookBusiness.Implementation
            .FindAll();
         }
 
-        public Book FindById(string id)
+        public Book FindById(long id)
         {
           return
           _repository

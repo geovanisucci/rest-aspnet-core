@@ -1,9 +1,12 @@
 namespace Sample.BasicRestAspnetCore.Host.Controllers.v1.PersonEndpoints
 {
+    using System.Collections.Generic;
     using System.Linq;
+    using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
     using Sample.BasicRestAspnetCore.Business.Person.Interface;
     using Sample.BasicRestAspnetCore.EntitiesDomain;
+    using Sample.BasicRestAspnetCore.Host.Controllers.v1.PersonEndpoints.ValueObjects;
 
     [ApiController]
     [ApiVersion("1")]
@@ -12,31 +15,45 @@ namespace Sample.BasicRestAspnetCore.Host.Controllers.v1.PersonEndpoints
     {
         // GET api/values
         [HttpGet]
-        public IActionResult Get([FromServices]IPersonBusiness personService)
+        public IActionResult Get([FromServices]IPersonBusiness personService, [FromServices]IMapper mapper)
         {
-            return Ok(personService.FindAll().AsEnumerable());
+            var resultDomain = personService.FindAll();
+            var resultVO = mapper.Map<List<PersonValue>>(resultDomain);
+            return Ok(resultVO);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public IActionResult Get(long id, [FromServices]IPersonBusiness personService)
+        public IActionResult Get(long id, [FromServices]IPersonBusiness personService, [FromServices]IMapper mapper)
         {
-            return Ok(personService.FindById(id));
+            var resultDomain = personService.FindById(id);
+            return Ok(mapper.Map<PersonValue>(resultDomain));
         }
 
         // POST api/values
         [HttpPost]
-        public IActionResult Post([FromBody] Person value, [FromServices]IPersonBusiness personService)
+        public IActionResult Post([FromBody] PersonValue value, [FromServices]IPersonBusiness personService, [FromServices]IMapper mapper)
         {
-            return Ok(personService.Create(value));
+
+            var personDomain = mapper.Map<Person>(value);
+
+            var personCreated = personService.Create(personDomain);
+
+            return Ok(mapper.Map<PersonValue>(personCreated));
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Person value, [FromServices]IPersonBusiness personService)
+        public IActionResult Put(int id, [FromBody] PersonValue value, 
+                                [FromServices]IPersonBusiness personService,
+                                [FromServices]IMapper mapper)
         {
             value.Id = id;
-            return Ok(personService.Update(value));
+            var personDomain = mapper.Map<Person>(value);
+
+            var personUpdated = personService.Update(personDomain);
+
+            return Ok(mapper.Map<PersonValue>(personUpdated));
         }
 
         // DELETE api/values/5
