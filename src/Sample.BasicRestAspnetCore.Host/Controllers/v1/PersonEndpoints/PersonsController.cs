@@ -7,44 +7,65 @@ namespace Sample.BasicRestAspnetCore.Host.Controllers.v1.PersonEndpoints
     using Sample.BasicRestAspnetCore.Business.Person.Interface;
     using Sample.BasicRestAspnetCore.EntitiesDomain;
     using Sample.BasicRestAspnetCore.Host.Controllers.v1.PersonEndpoints.ValueObjects;
+    using System;
 
     [ApiController]
     [ApiVersion("1")]
     [Route("api/[controller]/v{version:apiVersion}")]
-    public class PersonsController: ControllerBase
+    public class PersonsController : ControllerBase
     {
-        // GET api/values
+
         [HttpGet]
+        [ProducesResponseType(typeof(List<PersonValue>), 200)]
+        [ProducesResponseType(400)]
         public IActionResult Get([FromServices]IPersonBusiness personService, [FromServices]IMapper mapper)
         {
             var resultDomain = personService.FindAll();
             var resultVO = mapper.Map<List<PersonValue>>(resultDomain);
             return Ok(resultVO);
+
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(PersonValue), 200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public IActionResult Get(long id, [FromServices]IPersonBusiness personService, [FromServices]IMapper mapper)
         {
             var resultDomain = personService.FindById(id);
-            return Ok(mapper.Map<PersonValue>(resultDomain));
+            if (resultDomain != null)
+            {
+                return Ok(mapper.Map<PersonValue>(resultDomain));
+
+            }
+            else
+            {
+                return NotFound();
+            }
+
         }
 
-        // POST api/values
         [HttpPost]
+        [ProducesResponseType(typeof(PersonValue), 201)]
+        [ProducesResponseType(400)]
+        
         public IActionResult Post([FromBody] PersonValue value, [FromServices]IPersonBusiness personService, [FromServices]IMapper mapper)
         {
 
             var personDomain = mapper.Map<Person>(value);
 
-            var personCreated = personService.Create(personDomain);
+            var personCreated = mapper.Map<PersonValue>(personService.Create(personDomain));
 
-            return Ok(mapper.Map<PersonValue>(personCreated));
+            return Created("Post:Person", personCreated);
+
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] PersonValue value, 
+        [ProducesResponseType(typeof(PersonValue), 200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        public IActionResult Put(int id, [FromBody] PersonValue value,
                                 [FromServices]IPersonBusiness personService,
                                 [FromServices]IMapper mapper)
         {
@@ -53,11 +74,21 @@ namespace Sample.BasicRestAspnetCore.Host.Controllers.v1.PersonEndpoints
 
             var personUpdated = personService.Update(personDomain);
 
-            return Ok(mapper.Map<PersonValue>(personUpdated));
+            if (personUpdated != null)
+            {
+                return Ok(mapper.Map<PersonValue>(personUpdated));
+            }
+            else
+            {
+                return NotFound();
+            }
+
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
         public IActionResult Delete(int id, [FromServices]IPersonBusiness personService)
         {
             personService.Delete(id);
