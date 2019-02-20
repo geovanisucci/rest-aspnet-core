@@ -6,9 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Sample.BasicRestAspnetCore.Business.BookBusiness.Implementation;
+using Sample.BasicRestAspnetCore.Business.BookBusiness.Interface;
 using Sample.BasicRestAspnetCore.Business.Person.Implementation;
 using Sample.BasicRestAspnetCore.Business.Person.Interface;
 using Sample.BasicRestAspnetCore.Data.Context;
+using Sample.BasicRestAspnetCore.Data.Repositories.BookRepository.Implementation;
+using Sample.BasicRestAspnetCore.Data.Repositories.BookRepository.Interface;
+using Sample.BasicRestAspnetCore.Data.Repositories.GenericRepository;
 using Sample.BasicRestAspnetCore.Data.Repositories.Person.Implementation;
 using Sample.BasicRestAspnetCore.Data.Repositories.Person.Interface;
 using Sample.BasicRestAspnetCore.DatabaseMigration;
@@ -43,8 +48,13 @@ namespace Sample.BasicRestAspnetCore.Host
 
             services.AddApiVersioning();
 
+           // services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IPersonBusiness, PersonBusiness>();
             services.AddScoped<IPersonRepository, PersonRepository>();
+            services.AddScoped<IBookBusiness, BookBusiness>();
+            services.AddScoped<IBookRepository, BookRepository>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
