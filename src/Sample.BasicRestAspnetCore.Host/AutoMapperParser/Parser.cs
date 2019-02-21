@@ -6,8 +6,14 @@ using Sample.BasicRestAspnetCore.Host.Controllers.v1.PersonEndpoints.ValueObject
 
 namespace Sample.BasicRestAspnetCore.Host.AutoMapperParser
 {
+    /// <summary>
+    /// AutoMapper profile parser.
+    /// </summary>
     public class Parser : Profile
     {
+        /// <summary>
+        /// Constructor with mapper.
+        /// </summary>
         public Parser()
         {
             CreateMap<Person, PersonValue>().ReverseMap();

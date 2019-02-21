@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Sample.BasicRestAspnetCore.Host.Controllers.v1.BookEndpoints.ValueObjects
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [DataContract]
     public class BookValue
     {
