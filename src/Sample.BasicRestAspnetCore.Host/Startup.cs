@@ -20,11 +20,20 @@ using Sample.BasicRestAspnetCore.Data.Repositories.Person.Interface;
 using Sample.BasicRestAspnetCore.DatabaseMigration;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Rewrite;
+using System.IO;
+using System;
 
 namespace Sample.BasicRestAspnetCore.Host
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -33,11 +42,15 @@ namespace Sample.BasicRestAspnetCore.Host
             Configuration = builder.Build();
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
 
         public IConfiguration Configuration { get; }
 
-
-        // This method gets called by the runtime. Use this method to add services to the container.
+        ///
+        /// // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
@@ -61,7 +74,13 @@ namespace Sample.BasicRestAspnetCore.Host
                     Title = "RESTFul API .Net Core Repository Pattern Sample",
                     Version = "v1"
                 });
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
+
+
 
             /*
             Dependency Groups */
@@ -73,7 +92,8 @@ namespace Sample.BasicRestAspnetCore.Host
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        ///
+        /// // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -87,7 +107,8 @@ namespace Sample.BasicRestAspnetCore.Host
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => {
+            app.UseSwaggerUI(c =>
+            {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Sample V1");
             });
 
