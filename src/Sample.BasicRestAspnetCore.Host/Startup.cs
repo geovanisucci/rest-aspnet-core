@@ -22,6 +22,10 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Rewrite;
 using System.IO;
 using System;
+using Sample.BasicRestAspnetCore.Data.Repositories.UsersRepository.Implementation;
+using Sample.BasicRestAspnetCore.Data.Repositories.UsersRepository.Interface;
+using Sample.BasicRestAspnetCore.Business.UserBusiness.Interface;
+using Sample.BasicRestAspnetCore.Business.UserBusiness.Implementation;
 
 namespace Sample.BasicRestAspnetCore.Host
 {
@@ -88,6 +92,8 @@ namespace Sample.BasicRestAspnetCore.Host
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<IBookBusiness, BookBusiness>();
             services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IUserBusiness, UserBusiness>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
 
         }
