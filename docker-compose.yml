@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  sample.basicrestaspnetcore.host:
+    image: ${DOCKER_REGISTRY}samplebasicrestaspnetcorehost
+    build:
+      context: .
+      dockerfile: src/Sample.BasicRestAspnetCore.Host/Dockerfile

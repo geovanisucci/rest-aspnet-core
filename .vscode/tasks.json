@@ -16,6 +16,16 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "Start docker-compose",
+            "type": "shell",
+            "command": "docker-compose up -d",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
         }   
     ]
 }
