@@ -8,3 +8,4 @@ This sample contains:
 - Docker demonstration.
 - Database versioning with migrations using `DbUp-MySql`.
 - Basic operations with EF Core to persist data.
+- Security JWT Authenticate
