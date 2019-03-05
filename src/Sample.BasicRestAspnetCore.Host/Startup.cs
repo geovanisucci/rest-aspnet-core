@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Reflection;
+﻿using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -14,11 +13,9 @@ using Sample.BasicRestAspnetCore.Business.Person.Interface;
 using Sample.BasicRestAspnetCore.Data.Context;
 using Sample.BasicRestAspnetCore.Data.Repositories.BookRepository.Implementation;
 using Sample.BasicRestAspnetCore.Data.Repositories.BookRepository.Interface;
-using Sample.BasicRestAspnetCore.Data.Repositories.GenericRepository;
 using Sample.BasicRestAspnetCore.Data.Repositories.Person.Implementation;
 using Sample.BasicRestAspnetCore.Data.Repositories.Person.Interface;
 using Sample.BasicRestAspnetCore.DatabaseMigration;
-using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Rewrite;
 using System.IO;
 using System;
@@ -26,6 +23,12 @@ using Sample.BasicRestAspnetCore.Data.Repositories.UsersRepository.Implementatio
 using Sample.BasicRestAspnetCore.Data.Repositories.UsersRepository.Interface;
 using Sample.BasicRestAspnetCore.Business.UserBusiness.Interface;
 using Sample.BasicRestAspnetCore.Business.UserBusiness.Implementation;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Sample.BasicRestAspnetCore.Authentication.Configuration;
+using System.Collections.Generic;
+using Swashbuckle.AspNetCore.Swagger;
+using System.Linq;
 
 namespace Sample.BasicRestAspnetCore.Host
 {
@@ -70,13 +73,67 @@ namespace Sample.BasicRestAspnetCore.Host
 
             services.AddApiVersioning();
 
+            //Auth
+            var signingConfigurations = new SigningConfiguration();
+            services.AddSingleton(signingConfigurations);
+
+            var tokenConfigurations = new TokenConfiguration();
+            tokenConfigurations.Audience = "MyAudienceExample";
+            tokenConfigurations.Issuer = "MyIssuerExapmle";
+            tokenConfigurations.Seconds = 1200;
+
+            services.AddSingleton(tokenConfigurations);
+
+
+            services.AddAuthentication(authOptions =>
+            {
+                authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                authOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(bearerOptions =>
+            {
+                var paramsValidation = bearerOptions.TokenValidationParameters;
+                paramsValidation.IssuerSigningKey = signingConfigurations.Key;
+                paramsValidation.ValidAudience = tokenConfigurations.Audience;
+                paramsValidation.ValidIssuer = tokenConfigurations.Issuer;
+
+                // Validates the signing of a received token
+                paramsValidation.ValidateIssuerSigningKey = true;
+
+                // Checks if a received token is still valid
+                paramsValidation.ValidateLifetime = true;
+
+                // Tolerance time for the expiration of a token (used in case
+                // of time synchronization problems between different
+                // computers involved in the communication process)
+                paramsValidation.ClockSkew = TimeSpan.Zero;
+            });
+
+            // Enables the use of the token as a means of
+            // authorizing access to this project's resources
+            services.AddAuthorization(auth =>
+            {
+                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme‌​)
+                    .RequireAuthenticatedUser().Build());
+            });
+
+
             //Swagger
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
+
+               c.SwaggerDoc ("v1", new Info {
                     Title = "RESTFul API .Net Core Repository Pattern Sample",
                     Version = "v1"
+                }); 
+                //Creating the button to inform the JWT Token
+                c.AddSecurityDefinition ("Bearer", new ApiKeyScheme {
+                    In = "header",
+                        Description = "Please enter JWT with Bearer into field",
+                        Name = "Authorization",
+                        Type = "apiKey"
+                });
+                c.AddSecurityRequirement (new Dictionary<string, IEnumerable<string>> { { "Bearer", Enumerable.Empty<string> () },
                 });
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
@@ -124,6 +181,8 @@ namespace Sample.BasicRestAspnetCore.Host
 
             //app.UseHttpsRedirection();
             app.UseMvc();
+
+            app.UseAuthentication();
         }
 
 

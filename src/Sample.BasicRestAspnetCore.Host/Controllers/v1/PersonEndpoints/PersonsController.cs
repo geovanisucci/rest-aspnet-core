@@ -8,12 +8,15 @@ namespace Sample.BasicRestAspnetCore.Host.Controllers.v1.PersonEndpoints
     using Sample.BasicRestAspnetCore.EntitiesDomain;
     using Sample.BasicRestAspnetCore.Host.Controllers.v1.PersonEndpoints.ValueObjects;
     using System;
+    using Microsoft.AspNetCore.Authorization;
+
     /// <summary>
     /// Persons Endpoints.
     /// </summary>
     [ApiController]
     [ApiVersion("1")]
     [Route("api/[controller]/v{version:apiVersion}")]
+
     public class PersonsController : ControllerBase
     {
         /// <summary>
@@ -33,6 +36,7 @@ namespace Sample.BasicRestAspnetCore.Host.Controllers.v1.PersonEndpoints
         [HttpGet]
         [ProducesResponseType(typeof(List<PersonValue>), 200)]
         [ProducesResponseType(400)]
+        [Authorize("Bearer")]
         public IActionResult Get([FromServices]IPersonBusiness personService, [FromServices]IMapper mapper)
         {
             var resultDomain = personService.FindAll();
@@ -60,6 +64,7 @@ namespace Sample.BasicRestAspnetCore.Host.Controllers.v1.PersonEndpoints
         [ProducesResponseType(typeof(PersonValue), 200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         public IActionResult Get(long id, [FromServices]IPersonBusiness personService, [FromServices]IMapper mapper)
         {
             var resultDomain = personService.FindById(id);
@@ -92,7 +97,7 @@ namespace Sample.BasicRestAspnetCore.Host.Controllers.v1.PersonEndpoints
         [HttpPost]
         [ProducesResponseType(typeof(PersonValue), 201)]
         [ProducesResponseType(400)]
-
+        [Authorize("Bearer")]
         public IActionResult Post([FromBody] PersonValue value, [FromServices]IPersonBusiness personService, [FromServices]IMapper mapper)
         {
 
@@ -125,6 +130,7 @@ namespace Sample.BasicRestAspnetCore.Host.Controllers.v1.PersonEndpoints
         [ProducesResponseType(typeof(PersonValue), 200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         public IActionResult Put(int id, [FromBody] PersonValue value,
                                 [FromServices]IPersonBusiness personService,
                                 [FromServices]IMapper mapper)
@@ -162,6 +168,7 @@ namespace Sample.BasicRestAspnetCore.Host.Controllers.v1.PersonEndpoints
         [HttpDelete("{id}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         public IActionResult Delete(int id, [FromServices]IPersonBusiness personService)
         {
             personService.Delete(id);
