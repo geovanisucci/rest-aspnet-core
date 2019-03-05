@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using AutoMapper;
 using Sample.BasicRestAspnetCore.EntitiesDomain;
 using Sample.BasicRestAspnetCore.Host.Controllers.v1.BookEndpoints.ValueObjects;
+using Sample.BasicRestAspnetCore.Host.Controllers.v1.LoginEndpoints.ValueObjects;
 using Sample.BasicRestAspnetCore.Host.Controllers.v1.PersonEndpoints.ValueObjects;
 
 namespace Sample.BasicRestAspnetCore.Host.AutoMapperParser
@@ -18,6 +19,7 @@ namespace Sample.BasicRestAspnetCore.Host.AutoMapperParser
         {
             CreateMap<Person, PersonValue>().ReverseMap();
             CreateMap<Book, BookValue>().ReverseMap();
+            CreateMap<Users, UserValue>().ReverseMap();
         }
     }
 }
