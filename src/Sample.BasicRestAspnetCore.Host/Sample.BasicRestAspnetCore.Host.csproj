@@ -8,8 +8,6 @@
    <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
-    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
-    <UserSecretsId>ffb39876-90bd-4ccd-b2f5-982ff2b2f134</UserSecretsId>
   </PropertyGroup>
   
   <ItemGroup>

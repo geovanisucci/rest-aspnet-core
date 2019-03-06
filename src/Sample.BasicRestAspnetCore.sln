@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.BasicRestAspnetCore.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.BasicRestAspnetCore.Data", "Sample.BasicRestAspnetCore.Data\Sample.BasicRestAspnetCore.Data.csproj", "{AE7F26E2-F1F3-49C1-8A1E-6684372FED6C}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A74B8199-9172-46C5-96EE-74F0AAB32CD4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

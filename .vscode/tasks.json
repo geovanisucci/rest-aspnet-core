@@ -18,14 +18,14 @@
             }
         },
         {
-            "label": "Start docker-compose",
+            "label": "Start Docker Environment",
             "type": "shell",
-            "command": "docker-compose up -d",
+            "command": "docker-compose up start_dependencies && docker-compose up -d apis",
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
             "problemMatcher": []
-        }   
+        }
     ]
 }
