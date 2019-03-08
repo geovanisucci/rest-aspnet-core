@@ -1,55 +1,8 @@
-version: '3.1'
-
-# Service network
-networks:
-  service-network:
-    driver: bridge
+version: '3.4'
 
 services:
-
-  start_dependencies:
-    image: dadarek/wait-for-dependencies
-    depends_on:
-      - db
-    command: db:3306
-    networks:
-      - service-network
-
-  # MySQL database
-  db:
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: pwdGarapa2018
-    ports:
-      - 3306:3306
-    container_name: service_db
-    networks:
-      - service-network
-
-  # Starts all APIs
-  apis:
-    image: tianon/true
-    restart: "no"
-    depends_on:
-      - service_api
-    container_name: service_apis_bootstrap
-    networks:
-      - service-network
-
-  # API
-  service_api:
-    container_name: service_api
+  restnetcore.api:
+    image: restnetcore
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - 8081:8081
-    env_file:
-      - ./docker-shared-variables.env
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - CONNECTION_STRING=Server=192.168.99.100;Port=3306;Uid=root;Pwd=pwdGarapa2018;
-      - DATABASE_NAME=rest_with_aspnet
-    networks:
-      - service-network
