@@ -30,8 +30,8 @@
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "CONNECTION_STRING":"Server=192.168.99.100;Port=3306;Uid=root;Pwd=pwdGarapa2018;",
-                "DATABASE_NAME":"rest_with_aspnet"
+                "CONNECTION_STRING":"Server=172.21.0.2;Port=3306;Uid=root;Pwd=developer;",
+                "DATABASE_NAME":"rest_aspnet_core"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"

@@ -20,7 +20,7 @@
         {
             "label": "Start Docker Environment",
             "type": "shell",
-            "command": "docker-compose up start_dependencies && docker-compose up -d apis",
+            "command": "docker-compose up -d --build",
             "group": {
                 "kind": "build",
                 "isDefault": true
