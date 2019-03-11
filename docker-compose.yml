@@ -15,7 +15,7 @@ services:
       MYSQL_PASSWORD: developer
       MYSQL_DATABASE: rest_aspnet_core
     ports:
-      - "3306:3306"
+      - "172.21.0.1:3306:3306"
     networks:
       - rest-core-network
 
@@ -27,7 +27,7 @@ services:
     environment:
       TZ: America/Sao_Paulo
       ASPNETCORE_ENVIRONMENT: Production,
-      CONNECTION_STRING: Server=172.21.0.1;Port=3306;Uid=root;Pwd=developer;
+      CONNECTION_STRING: Server=172.21.0.1;Port=3306;Uid=developer;Pwd=developer;
       DATABASE_NAME: rest_aspnet_core
     ports:
       - "0.0.0.0:8089:9090"
