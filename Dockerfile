@@ -7,7 +7,7 @@ WORKDIR /src
 COPY ["src/Sample.BasicRestAspnetCore.Host/Sample.BasicRestAspnetCore.Host.csproj", "Sample.BasicRestAspnetCore.Host/"]
 RUN dotnet restore "Sample.BasicRestAspnetCore.Host/Sample.BasicRestAspnetCore.Host.csproj"
 COPY ./src .
-WORKDIR "/src/Sample.BasicRestAspnetCore.Host"
+WORKDIR /src/Sample.BasicRestAspnetCore.Host
 RUN dotnet build "Sample.BasicRestAspnetCore.Host.csproj" -c Release -o /app
 
 FROM build AS publish
