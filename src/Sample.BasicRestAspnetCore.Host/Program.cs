@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
@@ -23,14 +24,18 @@ namespace Sample.BasicRestAspnetCore.Host
         {
             CreateWebHostBuilder(args).Build().Run();
         }
+        
+
         /// <summary>
-        /// 
+        /// CreateWebHostBuilder
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseKestrel(options => {
+                    options.Listen(IPAddress.Any, 5000);
+                })
                 .UseStartup<Startup>();
     }
 }
