@@ -63,7 +63,7 @@ namespace Sample.BasicRestAspnetCore.Host
 
             var connection = $"{Configuration["CONNECTION_STRING"]}Database={Configuration["DATABASE_NAME"]};";
 
-            //Migration.Apply(Configuration["CONNECTION_STRING"], Configuration["DATABASE_NAME"]);
+            Migration.Apply(Configuration["CONNECTION_STRING"], Configuration["DATABASE_NAME"]);
 
             services.AddDbContext<MySqlContext>(options => options.UseMySql(connection));
 

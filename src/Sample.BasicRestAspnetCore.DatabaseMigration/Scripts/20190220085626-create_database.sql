@@ -1,6 +1,6 @@
-use `rest_with_aspnet`;
+use `rest_aspnet_core`;
 
-create table `persons`(
+create table `Persons`(
 	`Id` int(10) unsigned null default null,
     `FirstName` varchar(50) null default null,
     `LastName` varchar(50) null default null,

@@ -1,4 +1,4 @@
-use `rest_with_aspnet`;
+use `rest_aspnet_core`;
 
 Create table `Users`(
 `Id` int(10) unsigned null default null,
