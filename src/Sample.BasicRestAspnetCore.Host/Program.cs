@@ -32,10 +32,15 @@ namespace Sample.BasicRestAspnetCore.Host
         /// <param name="args"></param>
         /// <returns></returns>
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseKestrel(options => {
-                    options.Listen(IPAddress.Any, 5000);
-                })
-                .UseStartup<Startup>();
+            // WebHost.CreateDefaultBuilder(args)
+            //     .UseKestrel(options => {
+            //         options.Listen(IPAddress.Any, 8081);
+            //     })
+            //     .UseStartup<Startup>();
+            WebHost.CreateDefaultBuilder()
+            .ConfigureKestrel((context, options) =>{
+                options.ListenAnyIP(9090);
+                options.AddServerHeader = false;  
+            }).UseStartup<Startup>().UseEnvironment("Production");
     }
 }
