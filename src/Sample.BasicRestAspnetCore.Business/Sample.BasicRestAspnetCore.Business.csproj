@@ -3,6 +3,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Sample.BasicRestAspnetCore.EntitiesDomain\Sample.BasicRestAspnetCore.EntitiesDomain.csproj" />
     <ProjectReference Include="..\Sample.BasicRestAspnetCore.Data\Sample.BasicRestAspnetCore.Data.csproj" />
+    <ProjectReference Include="..\Sample.BasicRestAspnetCore.Authentication\Sample.BasicRestAspnetCore.Authentication.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.4.0" />
   </ItemGroup>
 
   <PropertyGroup>

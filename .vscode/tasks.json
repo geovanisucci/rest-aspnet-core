@@ -16,6 +16,16 @@
                 "kind": "build",
                 "isDefault": true
             }
-        }   
+        },
+        {
+            "label": "Start Docker Environment",
+            "type": "shell",
+            "command": "docker-compose up -d --build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
     ]
 }

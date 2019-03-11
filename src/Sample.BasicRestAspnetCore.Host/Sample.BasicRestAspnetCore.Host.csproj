@@ -18,7 +18,7 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-beta" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
     
     
   </ItemGroup>
@@ -28,6 +28,7 @@
     <ProjectReference Include="..\Sample.BasicRestAspnetCore.EntitiesDomain\Sample.BasicRestAspnetCore.EntitiesDomain.csproj" />
     <ProjectReference Include="..\Sample.BasicRestAspnetCore.Data\Sample.BasicRestAspnetCore.Data.csproj" />
     <ProjectReference Include="..\Sample.BasicRestAspnetCore.DatabaseMigration\Sample.BasicRestAspnetCore.DatabaseMigration.csproj" />
+    <ProjectReference Include="..\Sample.BasicRestAspnetCore.Authentication\Sample.BasicRestAspnetCore.Authentication.csproj" />
   </ItemGroup>
 
   <ItemGroup>

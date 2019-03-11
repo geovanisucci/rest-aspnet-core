@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.BasicRestAspnetCore.Host", "Sample.BasicRestAspnetCore.Host\Sample.BasicRestAspnetCore.Host.csproj", "{0D400E13-FFEC-4ED5-BD4F-7DAA25C10E55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.BasicRestAspnetCore.Host", "Sample.BasicRestAspnetCore.Host\Sample.BasicRestAspnetCore.Host.csproj", "{0D400E13-FFEC-4ED5-BD4F-7DAA25C10E55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.BasicRestAspnetCore.Business", "Sample.BasicRestAspnetCore.Business\Sample.BasicRestAspnetCore.Business.csproj", "{C7AEA2B4-F70E-4147-BE56-3A4D9BFEBD74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.BasicRestAspnetCore.Business", "Sample.BasicRestAspnetCore.Business\Sample.BasicRestAspnetCore.Business.csproj", "{C7AEA2B4-F70E-4147-BE56-3A4D9BFEBD74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.BasicRestAspnetCore.EntitiesDomain", "Sample.BasicRestAspnetCore.EntitiesDomain\Sample.BasicRestAspnetCore.EntitiesDomain.csproj", "{506C3997-04B5-4594-BABB-1F129560B695}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.BasicRestAspnetCore.EntitiesDomain", "Sample.BasicRestAspnetCore.EntitiesDomain\Sample.BasicRestAspnetCore.EntitiesDomain.csproj", "{506C3997-04B5-4594-BABB-1F129560B695}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.BasicRestAspnetCore.DatabaseMigration", "Sample.BasicRestAspnetCore.DatabaseMigration\Sample.BasicRestAspnetCore.DatabaseMigration.csproj", "{21C37CC0-16AC-402A-8B51-265C9EE93967}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.BasicRestAspnetCore.DatabaseMigration", "Sample.BasicRestAspnetCore.DatabaseMigration\Sample.BasicRestAspnetCore.DatabaseMigration.csproj", "{21C37CC0-16AC-402A-8B51-265C9EE93967}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.BasicRestAspnetCore.Authentication", "Sample.BasicRestAspnetCore.Authentication\Sample.BasicRestAspnetCore.Authentication.csproj", "{1804BEC1-17C2-4415-9B0A-D72B0E76AC26}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.BasicRestAspnetCore.Data", "Sample.BasicRestAspnetCore.Data\Sample.BasicRestAspnetCore.Data.csproj", "{AE7F26E2-F1F3-49C1-8A1E-6684372FED6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{0D400E13-FFEC-4ED5-BD4F-7DAA25C10E55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -72,5 +73,47 @@ Global
 		{21C37CC0-16AC-402A-8B51-265C9EE93967}.Release|x64.Build.0 = Release|Any CPU
 		{21C37CC0-16AC-402A-8B51-265C9EE93967}.Release|x86.ActiveCfg = Release|Any CPU
 		{21C37CC0-16AC-402A-8B51-265C9EE93967}.Release|x86.Build.0 = Release|Any CPU
+		{1804BEC1-17C2-4415-9B0A-D72B0E76AC26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1804BEC1-17C2-4415-9B0A-D72B0E76AC26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1804BEC1-17C2-4415-9B0A-D72B0E76AC26}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1804BEC1-17C2-4415-9B0A-D72B0E76AC26}.Debug|x64.Build.0 = Debug|Any CPU
+		{1804BEC1-17C2-4415-9B0A-D72B0E76AC26}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1804BEC1-17C2-4415-9B0A-D72B0E76AC26}.Debug|x86.Build.0 = Debug|Any CPU
+		{1804BEC1-17C2-4415-9B0A-D72B0E76AC26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1804BEC1-17C2-4415-9B0A-D72B0E76AC26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1804BEC1-17C2-4415-9B0A-D72B0E76AC26}.Release|x64.ActiveCfg = Release|Any CPU
+		{1804BEC1-17C2-4415-9B0A-D72B0E76AC26}.Release|x64.Build.0 = Release|Any CPU
+		{1804BEC1-17C2-4415-9B0A-D72B0E76AC26}.Release|x86.ActiveCfg = Release|Any CPU
+		{1804BEC1-17C2-4415-9B0A-D72B0E76AC26}.Release|x86.Build.0 = Release|Any CPU
+		{AE7F26E2-F1F3-49C1-8A1E-6684372FED6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE7F26E2-F1F3-49C1-8A1E-6684372FED6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE7F26E2-F1F3-49C1-8A1E-6684372FED6C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AE7F26E2-F1F3-49C1-8A1E-6684372FED6C}.Debug|x64.Build.0 = Debug|Any CPU
+		{AE7F26E2-F1F3-49C1-8A1E-6684372FED6C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AE7F26E2-F1F3-49C1-8A1E-6684372FED6C}.Debug|x86.Build.0 = Debug|Any CPU
+		{AE7F26E2-F1F3-49C1-8A1E-6684372FED6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE7F26E2-F1F3-49C1-8A1E-6684372FED6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE7F26E2-F1F3-49C1-8A1E-6684372FED6C}.Release|x64.ActiveCfg = Release|Any CPU
+		{AE7F26E2-F1F3-49C1-8A1E-6684372FED6C}.Release|x64.Build.0 = Release|Any CPU
+		{AE7F26E2-F1F3-49C1-8A1E-6684372FED6C}.Release|x86.ActiveCfg = Release|Any CPU
+		{AE7F26E2-F1F3-49C1-8A1E-6684372FED6C}.Release|x86.Build.0 = Release|Any CPU
+		{A74B8199-9172-46C5-96EE-74F0AAB32CD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A74B8199-9172-46C5-96EE-74F0AAB32CD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A74B8199-9172-46C5-96EE-74F0AAB32CD4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A74B8199-9172-46C5-96EE-74F0AAB32CD4}.Debug|x64.Build.0 = Debug|Any CPU
+		{A74B8199-9172-46C5-96EE-74F0AAB32CD4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A74B8199-9172-46C5-96EE-74F0AAB32CD4}.Debug|x86.Build.0 = Debug|Any CPU
+		{A74B8199-9172-46C5-96EE-74F0AAB32CD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A74B8199-9172-46C5-96EE-74F0AAB32CD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A74B8199-9172-46C5-96EE-74F0AAB32CD4}.Release|x64.ActiveCfg = Release|Any CPU
+		{A74B8199-9172-46C5-96EE-74F0AAB32CD4}.Release|x64.Build.0 = Release|Any CPU
+		{A74B8199-9172-46C5-96EE-74F0AAB32CD4}.Release|x86.ActiveCfg = Release|Any CPU
+		{A74B8199-9172-46C5-96EE-74F0AAB32CD4}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FB0126D3-7B25-4B64-AF9D-C9ADBD566CFF}
 	EndGlobalSection
 EndGlobal

@@ -3,6 +3,7 @@ namespace Sample.BasicRestAspnetCore.Host.Controllers.v1.BookEndpoints
     using System.Collections.Generic;
     using System.Linq;
     using AutoMapper;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Sample.BasicRestAspnetCore.Business.BookBusiness.Interface;
     using Sample.BasicRestAspnetCore.Business.Person.Interface;
@@ -35,6 +36,7 @@ namespace Sample.BasicRestAspnetCore.Host.Controllers.v1.BookEndpoints
         [HttpGet]
         [ProducesResponseType(typeof(List<BookValue>), 200)]
         [ProducesResponseType(400)]
+        [Authorize("Bearer")]
         public IActionResult Get([FromServices]IBookBusiness bookBusiness, [FromServices]IMapper mapper)
         {
             var resultDomain = bookBusiness.FindAll();
@@ -61,6 +63,7 @@ namespace Sample.BasicRestAspnetCore.Host.Controllers.v1.BookEndpoints
         [ProducesResponseType(typeof(BookValue), 200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         public IActionResult Get(long id, [FromServices]IBookBusiness bookBusiness, [FromServices]IMapper mapper)
         {
             var resultDomain = bookBusiness.FindById(id);
@@ -92,7 +95,7 @@ namespace Sample.BasicRestAspnetCore.Host.Controllers.v1.BookEndpoints
         [HttpPost]
         [ProducesResponseType(typeof(BookValue), 201)]
         [ProducesResponseType(400)]
-
+        [Authorize("Bearer")]
         public IActionResult Post([FromBody] BookValue value, [FromServices]IBookBusiness bookBusiness, [FromServices]IMapper mapper)
         {
             var bookDomain = mapper.Map<Book>(value);
@@ -122,6 +125,7 @@ namespace Sample.BasicRestAspnetCore.Host.Controllers.v1.BookEndpoints
         [ProducesResponseType(typeof(BookValue), 200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         public IActionResult Put(long id, [FromBody] BookValue value, [FromServices]IBookBusiness bookBusiness, [FromServices]IMapper mapper)
         {
             value.Id = id;
@@ -155,6 +159,7 @@ namespace Sample.BasicRestAspnetCore.Host.Controllers.v1.BookEndpoints
         [HttpDelete("{id}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         public IActionResult Delete(int id, [FromServices]IBookBusiness bookBusiness)
         {
             bookBusiness.Delete(id);
