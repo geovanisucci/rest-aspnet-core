@@ -1,6 +1,18 @@
 version: '3.4'
 
+networks: 
+    rest-core-network:
+        driver: bridge
+
 services:
+  start_dependencies:
+    image: dadarek/wait-for-dependencies
+    depends_on:
+      - db
+    command: db:3306
+    networks:
+      - rest-core-network
+
   db:
     image: gsajorato/rest-mysql
     command: mysqld --default-authentication-plugin=mysql_native_password
@@ -15,29 +27,36 @@ services:
       MYSQL_PASSWORD: developer
       MYSQL_DATABASE: rest_aspnet_core
     ports:
-      - "3308:3306"
+      - "3306:3306"
+    container_name: rest_db
+    networks:
+      - rest-core-network
+
+  api:
+    image: tianon/true
+    restart: "no"
+    depends_on:
+      - restnetcore.api
     networks:
       - rest-core-network
 
   restnetcore.api:
     image: gsajorato/restnetcore
+    container_name: rest-api
+    restart: always
     build:
       context: .
       dockerfile: Dockerfile
     environment:
       TZ: America/Sao_Paulo
       ASPNETCORE_ENVIRONMENT: Production,
-      CONNECTION_STRING: Server=172.21.0.2;Port=3306;Uid=root;Pwd=developer;
+      CONNECTION_STRING: Server=db;Port=3306;Uid=developer;Pwd=developer;
       DATABASE_NAME: rest_aspnet_core
     ports:
-      - "8001:8002"
+      - "0.0.0.0:8089:9090"
     links:
       - db
     depends_on:
       - db
     networks: 
       - rest-core-network
-
-networks: 
-    rest-core-network:
-        driver: bridge

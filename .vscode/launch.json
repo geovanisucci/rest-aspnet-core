@@ -30,7 +30,7 @@
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "CONNECTION_STRING":"Server=172.21.0.2;Port=3306;Uid=root;Pwd=developer;",
+                "CONNECTION_STRING":"Server=172.21.0.1;Port=3306;Uid=root;Pwd=developer;",
                 "DATABASE_NAME":"rest_aspnet_core"
             },
             "sourceFileMap": {

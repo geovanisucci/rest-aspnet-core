@@ -8,4 +8,4 @@ create table `Persons`(
     `Gender` varchar(50) null default null
 );
 
-alter table `persons` change `Id` `Id` int(10) auto_increment primary key;
+alter table `Persons` change `Id` `Id` int(10) auto_increment primary key;
